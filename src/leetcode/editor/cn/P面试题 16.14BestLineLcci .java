@@ -22,44 +22,45 @@ import java.util.HashMap;
 import java.util.List;
 
 //java:最佳直线
-class P面试题 16.14BestLineLcci{
-    public static void main(String[] args){
-        Solution solution = new P面试题 16.14BestLineLcci().new Solution();
-    }
+class P面试题1614BestLineLcci{
+public static void main(String[]args){
+        Solution solution=new P面试题1614BestLineLcci().new Solution();
+        }
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     //直线一般式 ax+by+c=0
     // a=y2-y1;b=x1-x2;c=x2y1-x1y2
     public int[] bestLine(int[][] points) {
-        HashMap<String,Integer> map = new HashMap<>();
-        HashMap<String,int[]> record = new HashMap<>();
-        int max=0;
-        String maxKey="";
+        HashMap<String, Integer> map = new HashMap<>();
+        HashMap<String, int[]> record = new HashMap<>();
+        int max = 0;
+        String maxKey = "";
         int[] res = new int[2];
-        for(int i=0;i<points.length-1;i++){
-            for(int j=i+1;j< points.length;j++){
+        for (int i = 0; i < points.length - 1; i++) {
+            for (int j = i + 1; j < points.length; j++) {
                 int a = points[j][1] - points[i][1];
                 int b = points[i][0] - points[j][0];
                 int c = points[j][0] * points[i][1] - points[i][0] * points[j][1];
-                int g = gcd(gcd(a,b),c);
-                a/=g;
-                b/=g;
-                c/=g;
+                int g = gcd(gcd(a, b), c);
+                a /= g;
+                b /= g;
+                c /= g;
 
-                String key = a+"-"+b+"-"+c;
-                int count = map.getOrDefault(key,0)+1;
-                map.put(key,count);
-                if(count == 1) record.put(key,new int[]{i,j});
-                if(count>max){
-                    max=count;
-                    maxKey=key;
+                String key = a + "-" + b + "-" + c;
+                int count = map.getOrDefault(key, 0) + 1;
+                map.put(key, count);
+                if (count == 1) record.put(key, new int[]{i, j});
+                if (count > max) {
+                    max = count;
+                    maxKey = key;
                     res = record.get(key);
-                }else if(count==max){
-                    int[] t1=record.get(maxKey);
-                    int[] t2=record.get(key);
-                    if(t1[0]>t2[0]||t1[0]==t2[0]&&t1[1]>t2[1]){
-                        maxKey=key;
-                        res=t2;
+                } else if (count == max) {
+                    int[] t1 = record.get(maxKey);
+                    int[] t2 = record.get(key);
+                    if (t1[0] > t2[0] || t1[0] == t2[0] && t1[1] > t2[1]) {
+                        maxKey = key;
+                        res = t2;
                     }
                 }
 
@@ -68,8 +69,9 @@ class Solution {
         return res;
 
     }
-    public int gcd(int a,int b){
-        return b==0?a:gcd(b,a%b);
+
+    public int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
