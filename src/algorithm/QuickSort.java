@@ -3,7 +3,7 @@ package algorithm;
 import java.util.Random;
 
 /**
- * @description:
+ * @description: 快速排序
  * @author: wangmingjian02
  * @create: 2020-10-28
  **/
